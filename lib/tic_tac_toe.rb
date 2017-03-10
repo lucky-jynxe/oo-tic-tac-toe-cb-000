@@ -61,14 +61,11 @@ class TicTacToe
   end
 
   def won?
-    if @board != Array.new(9, " ")
-      WIN_COMBINATIONS.each do |combination|
+      WIN_COMBINATIONS.any? do |combination|
         if combination.all?{|position| @board[position] == "X"} || combination.all?{|position| @board[position] == "O"}
-          return combination.to_a
+          return combination
         end
       end
-    end
-    nil
   end
 
   def full?
